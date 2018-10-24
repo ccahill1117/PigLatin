@@ -6,7 +6,17 @@ function makeInputArray(inputString, separator) {
 
 function pigLatinTranslator(inputArray, vowels) {
   // var newArray =[];
-  if (vowels.includes(inputArray[0])) {
+  if (yArray.includes(inputArray[2])) {
+    var yBeginning = inputArray.slice(0,2);
+    var yEnd = inputArray.slice(2);
+    return (yEnd.concat(yBeginning)).concat(["a","y"]);
+  }
+  else if (yArray.includes(inputArray[0])) {
+    var yCon = inputArray.shift();
+    return (inputArray.concat(yCon)).concat(["a","y"]);
+  }
+
+  else if (vowels.includes(inputArray[0])) {
     return inputArray.concat(["w","a","y"])
     debugger
   }
@@ -20,7 +30,8 @@ function pigLatinTranslator(inputArray, vowels) {
   else if (consonantArray.includes(inputArray[0]) &&
            consonantArray.includes(inputArray[1])) {
            var twoCons = inputArray.slice(0, 2);
-           return inputArray.concat(twoCons);
+           var endOfTwoCons = inputArray.slice(2);
+           return (endOfTwoCons.concat(twoCons)).concat(["a", "y"]);
   }
   else if (consonantArray.includes(inputArray[0])) {
            var oneCon = inputArray.shift();
@@ -33,7 +44,8 @@ function pigLatinTranslator(inputArray, vowels) {
 
 var vowelArray = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
 var consonantArray = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "w", "x", "z", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Z"];
-var exceptionsArray = ["y", "Y", "q", "Q"];
+var yArray = ["y", "Y"];
+var qArray = ["q", "Q"];
 
 
 $(document).ready(function(){
@@ -43,6 +55,12 @@ $(document).ready(function(){
   var userString = $("#inputText").val();
   var userArray = makeInputArray(userString, "");
   var result = pigLatinTranslator(userArray, vowelArray);
+
+  $(".resultDiv").empty();
+  $(".resultDiv").append(result);
+
+  $(".resultDiv2").empty();
+  $(".resultDiv2").text(result.join(''));
 
   console.log(result);
 
