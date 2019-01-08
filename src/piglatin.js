@@ -76,20 +76,25 @@ Sentence.prototype.wordMachine = function() {
   var consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "w", "x", "z", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Z"];
   var qArray = ["q","Q"];
   var yArray = ["y","Y"];
+  var resultArray = [];
   var input = this.string;
   if (vowels.includes(input[0])) {
     var result = new Sentence(input).vowelFinder();
+    resultArray.push(result);
   }
-  if (consonants.includes(input[0])) {
-    var result = new Sentence(input).consonantFinder();
+  else if (consonants.includes(input[0])) {
+    var result2 = new Sentence(input).consonantFinder();
+    resultArray.push(result2);
   }
-  if (qArray.includes(input[0])) {
-    var result = new Sentence(input).qFinder();
+  else if (qArray.includes(input[0])) {
+    var result3 = new Sentence(input).qFinder();
+    resultArray.push(result3);
   }
-  if (yArray.includes(input[0])) {
-    var result = new Sentence(input).yFinder();
+  else if (yArray.includes(input[0])) {
+    var result4 = new Sentence(input).yFinder();
+    resultArray.push(result4);
   }
-  return result;
+  return resultArray.join('');
 }
 
 export function pigLatinTranslator(inputArray) {

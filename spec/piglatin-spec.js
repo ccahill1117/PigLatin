@@ -27,4 +27,9 @@ describe('makeInputArray', function() {
     var string = new Sentence("Hello");
     expect(string.consonantFinder()).toEqual("elloHay");
   })
+
+  it('should translate a single word string into piglatin', function() {
+    var anotherString = new Sentence("tricky");
+    expect(anotherString.wordMachine()).toEqual("ickytray");
+  })
 })
