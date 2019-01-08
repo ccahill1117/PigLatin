@@ -32,4 +32,9 @@ describe('makeInputArray', function() {
     var anotherString = new Sentence("tricky");
     expect(anotherString.wordMachine()).toEqual("ickytray");
   })
+
+  it('should translate an entire sentence into piglating', function() {
+    var sentenceString = new Sentence ("here is a sentence");
+    expect(sentenceString.sentenceMachine()).toEqual("erehay isway away entencesay")
+  })
 })
