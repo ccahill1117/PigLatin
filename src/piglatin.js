@@ -1,8 +1,3 @@
-
-export function makeInputArray(inputString, separator) {
-  return (inputString.split(separator));
-}
-
 export function Sentence(string) {
   this.string = string;
 
@@ -26,12 +21,12 @@ Sentence.prototype.vowelFinder = function() {
   var input = this.string;
   var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   if (vowels.includes(input[0])) {
-  var result = input + "way";
-  return result;
-}
-else {
-  return input;
-}
+    var result = input + "way";
+    return result;
+  }
+  else {
+    return input;
+  }
 }
 
 Sentence.prototype.qFinder = function() {
@@ -57,18 +52,18 @@ Sentence.prototype.consonantFinder = function() {
   var consonantCounter = 0;
   var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   var consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "w", "x", "z", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Z"];
-    for (var i = 0; i < input.length; i++)
-      {
-      if (consonants.includes(input[i])) {
-        arr.push(input[i]);
-        consonantCounter = consonantCounter + 1;
-      }
-      else if (vowels.includes(input[i]))
-        { break; }
+  for (var i = 0; i < input.length; i++)
+  {
+    if (consonants.includes(input[i])) {
+      arr.push(input[i]);
+      consonantCounter = consonantCounter + 1;
     }
-
-    return ((input.slice(consonantCounter)).concat(arr.join('')).concat("ay"));
+    else if (vowels.includes(input[i]))
+    { break; }
   }
+
+  return ((input.slice(consonantCounter)).concat(arr.join('')).concat("ay"));
+}
 
 Sentence.prototype.wordMachine = function() {
   var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];

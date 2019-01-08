@@ -1,12 +1,5 @@
-import { makeInputArray, pigLatinTranslator, Sentence } from './../src/piglatin.js';
+import { Sentence } from './../src/piglatin.js';
 
-describe('makeInputArray', function() {
-
-  it('should take an input string and return an array of characters', function() {
-    var result = makeInputArray("hello","");
-    expect(result).toEqual(["h","e","l","l","o"]);
-  });
-});
 
   describe ('Sentence', function() {
   it('should test whether Sentence can accept a string', function() {

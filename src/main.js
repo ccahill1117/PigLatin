@@ -1,5 +1,5 @@
-import './styles.css'
-import { makeInputArray, pigLatinTranslator } from './piglatin.js'
+import './styles.css';
+import { Sentence } from './piglatin.js';
 import $ from 'jquery';
 
 
@@ -8,18 +8,12 @@ $(document).ready(function(){
     event.preventDefault();
 
     var userString = $("#inputText").val();
-    var userArray = makeInputArray(userString, "");
-    var result = pigLatinTranslator(userArray);
+    var translate = new Sentence(userString);
+    var translated = translate.sentenceMachine();
 
-    console.log(userString);
 
     $(".resultDiv").empty();
-    $(".resultDiv").append(result);
-
-    $(".resultDiv2").empty();
-    $(".resultDiv2").text(result.join(''));
-
-
+    $(".resultDiv").append(translated);
 
   });
 });
