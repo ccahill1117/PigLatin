@@ -14,16 +14,89 @@ Sentence.prototype.isWord = function() {
   for (var i =0; i <input.length; i++)
   if(exclude.indexOf(input[i]) != -1)
   {
-    return "not allowed"
+    return "not allowed";
+  }
+  else
+  {
+    return input.join("");
   }
 }
 
+Sentence.prototype.vowelFinder = function() {
+  var input = this.string;
+  var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  if (vowels.includes(input[0])) {
+  var result = input + "way";
+  console.log(result);
+  return result;
+}
+else {
+  return input;
+}
+}
+
+Sentence.prototype.qFinder = function() {
+  var input = this.string;
+  var qArray = ["q","Q"];
+  if(qArray.includes(input[0])) {
+    return (input.slice(2)).concat("quay")
+  }
+}
+
+Sentence.prototype.yFinder = function() {
+  var input = this.string;
+  var qArray = ["y","Y"];
+  if(qArray.includes(input[0])) {
+    return (input.slice(1)).concat("yay")
+  }
+}
+
+
+Sentence.prototype.consonantFinder = function() {
+  var input = this.string;
+  var arr = [];
+  var consonantCounter = 0;
+  var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  var consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "w", "x", "z", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Z"];
+    for (var i = 0; i < input.length; i++)
+      {
+      if (consonants.includes(input[i])) {
+        arr.push(input[i]);
+        consonantCounter = consonantCounter + 1;
+      }
+      else if (vowels.includes(input[i]))
+        { break; }
+    }
+
+    return ((input.slice(consonantCounter)).concat(arr.join('')).concat("ay"));
+  }
+
+Sentence.prototype.wordMachine = function() {
+  var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  var consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "w", "x", "z", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Z"];
+  var qArray = ["q","Q"];
+  var yArray = ["y","Y"];
+  var input = this.string;
+  if (vowels.includes(input[0])) {
+    var result = new Sentence(input).vowelFinder();
+  }
+  if (consonants.includes(input[0])) {
+    var result = new Sentence(input).consonantFinder();
+  }
+  if (qArray.includes(input[0])) {
+    var result = new Sentence(input).qFinder();
+  }
+  if (yArray.includes(input[0])) {
+    var result = new Sentence(input).yFinder();
+  }
+  return result;
+}
+
 export function pigLatinTranslator(inputArray) {
-  // var newArray =[];
   var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   var consonantArray = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "r", "s", "t", "v", "w", "x", "z", "B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "V", "W", "X", "Z"];
   var yArray = ["y", "Y"];
-  // var qArray = ["q", "Q"];
+
 
   if (yArray.includes(inputArray[2])) {
     var yBeginning = inputArray.slice(0,2);
